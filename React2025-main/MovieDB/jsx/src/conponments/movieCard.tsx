@@ -1,27 +1,32 @@
-interface Movie {
-    poster_path: string;
-    title: string;
-    vote_average: number;
-    overview: string;
-    release_date: string;
-}
+import FavoritMovie from "./favoritMovie";
+import { MovieType } from "../types/movieType";
 
-function MovieCard({ movie }: { movie: Movie }) {
-    const posterBasePath = 'https://image.tmdb.org/t/p/w185_and_h278_bestv2';
-    return (
-        <div className="col-lg-2 mb-4">
-            <div className="card">
-                <img src={posterBasePath + movie.poster_path} className="card-img-top" alt="..." />
-                <div className="card-body">
-                    <h5 className="card-title "><span>{movie.title.substring(0, 200)}</span></h5><span className="far fa-star" aria-hidden="true"></span><span className="ml-1">{movie.vote_average}</span>
-                    <p className="card-text">{movie.overview.substring(0, 125).concat('....')}</p>
-                    <div className="d-flex justify-content-between p-0"><span className="far fa-calendar" aria-hidden="true"> {movie.release_date}</span><span className="far fa-play-circle"></span></div>
-                </div>
-            </div>
+function MovieCard({ movie }: { movie: MovieType }) {
+  const posterBasePath = "https://image.tmdb.org/t/p/w185_and_h278_bestv2";
+
+  return (
+    <div className="col-lg-2 mb-4">
+      <div className="card position-relative">
+        <img
+          src={posterBasePath + movie.poster_path}
+          className="card-img-top"
+          alt={movie.title}
+        />
+        <div className="card-body">
+          <h5 className="card-title">{movie.title}</h5>
+          <p className="card-text">{movie.overview.substring(0, 125)}...</p>
+          <div className="d-flex justify-content-between align-items-center">
+            <span className="text-muted">{movie.release_date}</span>
+            <span className="badge bg-warning text-dark">{movie.vote_average}</span>
+          </div>
+          <div className="mt-3">
+            {/* Add the FavoritMovie button */}
+            <FavoritMovie movie={movie} />
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 }
-
-
 
 export default MovieCard;

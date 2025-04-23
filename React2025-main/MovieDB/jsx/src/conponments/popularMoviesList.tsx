@@ -1,37 +1,29 @@
 import { useFetchPopularMoviesQuery } from "../store/api/moviesApi";
 import MovieCard from "./movieCard";
+import { MovieType } from "../types/movieType";
 
-interface Movie {
-  id: number;
-  title: string;
-  overview: string;
-  poster_path: string;
-  vote_average: number;
-  release_date: string;
-}
 
-interface MoviesData {
-  results: Movie[];
-}
 
 function PopularMoviesList() {
-  const { data, error, isFetching } = useFetchPopularMoviesQuery({}) as {
-    data: MoviesData;
-    error: any;
-    isFetching: boolean;
-  };
+  const { data, error, isFetching } = useFetchPopularMoviesQuery({});
 
   let content;
   if (isFetching) {
-    content = <div>Loading;</div>;
+    content = <div className="text-center">Loading popular movies...</div>;
   } else if (error) {
-    content = <div>Error loading movies.</div>;
+    content = <div className="text-center text-danger">Error loading popular movies.</div>;
   } else {
-    content = data.results.map((movie: Movie) => {
-      return <MovieCard key={movie.id} movie={movie}></MovieCard>;
-    });
+    content = data?.results?.map((movie: MovieType) => (
+      <MovieCard key={movie.id} movie={movie} />
+    ));
   }
-  return <div className="row row-cols-3 row-cols-md-2 m-4">{content}</div>;
+
+  return (
+    <div className="container">
+      <h2 className="text-center my-4">Popular Movies</h2>
+      <div className="row row-cols-3 row-cols-md-2 m-4">{content}</div>
+    </div>
+  );
 }
 
 export default PopularMoviesList;
