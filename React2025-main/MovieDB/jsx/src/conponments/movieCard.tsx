@@ -20,7 +20,6 @@ function MovieCard({ movie }: { movie: MovieType }) {
             <span className="badge bg-warning text-dark">{movie.vote_average}</span>
           </div>
           <div className="mt-3">
-            {/* Add the FavoritMovie button */}
             <FavoritMovie movie={movie} />
           </div>
         </div>

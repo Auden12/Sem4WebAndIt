@@ -31,8 +31,8 @@ const moviesApi = createApi({
           };
         },
       }),
-    }; // <-- Add this closing brace for the endpoints object
-  }, // <-- Add this closing brace for the endpoints function
+    };
+  },
 });
 
 export const { useFetchPopularMoviesQuery, useFetchHighestRatedMoviesQuery } = moviesApi;
