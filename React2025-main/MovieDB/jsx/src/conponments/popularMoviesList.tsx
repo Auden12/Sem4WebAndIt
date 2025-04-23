@@ -14,7 +14,7 @@ function PopularMoviesList() {
     content = <div className="text-center text-danger">Error loading popular movies.</div>;
   } else {
     content = data?.results?.map((movie: MovieType) => (
-      <MovieCard key={movie.id} movie={movie} />
+      <MovieCard key={movie.id} movie={movie} /> // randere list af moviecard component
     ));
   }
 

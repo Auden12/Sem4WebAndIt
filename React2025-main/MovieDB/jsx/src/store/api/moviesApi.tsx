@@ -35,5 +35,5 @@ const moviesApi = createApi({
   },
 });
 
-export const { useFetchPopularMoviesQuery, useFetchHighestRatedMoviesQuery } = moviesApi;
+export const { useFetchPopularMoviesQuery, useFetchHighestRatedMoviesQuery } = moviesApi; // exportere hooks
 export { moviesApi };

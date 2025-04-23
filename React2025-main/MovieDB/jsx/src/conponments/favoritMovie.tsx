@@ -4,10 +4,9 @@ import { addFavorite, removeFavorite } from "../store/favoriteMoviesState";
 import { MovieType } from "../types/movieType";
 
 function FavoritMovie({ movie }: { movie: MovieType }) {
-  const dispatch = useDispatch();
-  const favorites = useSelector((state: RootState) => state.favoriteMovies.favorites);
+  const dispatch = useDispatch(); // hook til dispatch til redux store
+  const favorites = useSelector((state: RootState) => state.favoriteMovies.favorites); // tjekker om filmen allerede er favorit
 
-  // Check if the movie is already in the favorites list
   const isFavorite = favorites.some((favMovie) => favMovie.id === movie.id);
 
   const toggleFavorite = () => {

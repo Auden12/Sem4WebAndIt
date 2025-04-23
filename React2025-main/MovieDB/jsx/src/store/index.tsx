@@ -6,7 +6,7 @@ export const store = configureStore({
   reducer: {
     [moviesApi.reducerPath]: moviesApi.reducer, //dette er en mere sikker måde, ungår "typo's"
   },
-  middleware: (getDefaultMiddleware) => {  //Thunk middelware er default når der benyttes Redux Toolkit configureStore.
+  middleware: (getDefaultMiddleware) => {  //Thunk middelware ables RTK query
     return getDefaultMiddleware()
     .concat(moviesApi.middleware);
   }

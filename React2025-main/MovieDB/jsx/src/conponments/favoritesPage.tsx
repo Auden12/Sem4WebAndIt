@@ -3,7 +3,7 @@ import { RootState } from "../store";
 import MovieCard from "./movieCard";
 
 function FavoritesPage() {
-  const favorites = useSelector((state: RootState) => state.favoriteMovies.favorites);
+  const favorites = useSelector((state: RootState) => state.favoriteMovies.favorites); // favurit fra redux store
 
   let content;
   if (favorites.length === 0) {
